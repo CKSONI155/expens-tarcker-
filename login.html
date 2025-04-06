@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-lang-en="Login - Super Ultimate Expense Tracker" data-lang-hi="लॉगिन - सुपर अल्टीमेट व्यय ट्रैकर">Login - Super Ultimate Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="login-container animate__animated animate__fadeIn">
+        <h1 data-lang-en="Login" data-lang-hi="लॉगिन">Login</h1>
+        <form id="loginForm">
+            <input type="text" id="username" data-lang-en="Username" data-lang-hi="उपयोगकर्ता नाम" placeholder="Username" required>
+            <input type="password" id="password" data-lang-en="Password" data-lang-hi="पासवर्ड" placeholder="Password" required>
+            <button type="submit" data-lang-en="Login" data-lang-hi="लॉगिन">Login</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#00d4ff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3, random: true },
+                move: { speed: 6 }
+            }
+        });
+        $(document).ready(function() {
+            $('#loginForm').submit(function(e) {
+                e.preventDefault();
+                let username = $('#username').val();
+                let password = $('#password').val();
+                if (username === 'user' && password === 'pass123') {
+                    localStorage.setItem('loggedIn', 'true');
+                    window.location.href = 'index.html';
+                } else {
+                    alert(localStorage.getItem('lang') === 'hi' ? 'गलत क्रेडेंशियल!' : 'Invalid credentials!');
+                }
+            });
+            updateLanguage();
+        });
+        function updateLanguage() {
+            let lang = localStorage.getItem('lang') || 'en';
+            $('[data-lang-en]').each(function() {
+                $(this).text($(this).data(`lang-${lang}`));
+                if ($(this).is('input')) {
+                    $(this).attr('placeholder', $(this).data(`lang-${lang}`));
+                }
+            });
+            document.title = $(document).find('title').data(`lang-${lang}`);
+        }
+    </script>
+</body>
+</html>

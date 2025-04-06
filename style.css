@@ -1,0 +1,155 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #0d1b2a;
+    color: #e0e1dd;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s, color 0.3s;
+}
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(27, 38, 59, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+h1 {
+    font-size: 2.5em;
+    color: #00d4ff;
+    text-shadow: 0 0 10px #00d4ff;
+}
+.header-controls {
+    display: flex;
+    gap: 10px;
+}
+section {
+    background: rgba(27, 38, 59, 0.85);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+h2 {
+    color: #00d4ff;
+    text-shadow: 0 0 5px #00d4ff;
+}
+input, select, button {
+    padding: 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #1b263b;
+    color: #e0e1dd;
+    font-size: 16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+button {
+    background: #00d4ff;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00d4ff;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+.stat-card {
+    background: #415a77;
+    padding: 15px;
+    border-radius: 8px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+.stat-card .label {
+    font-size: 1.1em;
+    color: #00d4ff;
+}
+.stat-card .value {
+    font-size: 1.5em;
+    color: #e0e1dd;
+    margin-top: 10px;
+    display: block;
+}
+.form, .filters, .budget {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.expense-card {
+    background: #415a77;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.5s;
+    position: relative;
+}
+.expense-card:hover {
+    transform: rotateY(180deg);
+}
+.expense-card .front {
+    display: block;
+}
+.expense-card .back {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #778da9;
+    padding: 15px;
+    border-radius: 8px;
+    transform: rotateY(180deg);
+}
+.expense-card.flipped .front {
+    display: none;
+}
+.expense-card.flipped .back {
+    display: block;
+}
+
+/* Light Mode */
+body.light {
+    background: #e0e1dd;
+    color: #1b263b;
+}
+body.light section {
+    background: rgba(255, 255, 255, 0.9);
+}
+body.light h1, body.light h2 {
+    color: #1b263b;
+    text-shadow: none;
+}
+body.light input, body.light select {
+    background: #fff;
+    color: #1b263b;
+}
+body.light .expense-card {
+    background: #778da9;
+}
+body.light .stat-card {
+    background: #d1d5db;
+}

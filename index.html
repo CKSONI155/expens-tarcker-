@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-lang-en="Super Ultimate Expense Tracker" data-lang-hi="सुपर अल्टीमेट व्यय ट्रैकर">Super Ultimate Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container animate__animated animate__fadeIn">
+        <header>
+            <h1 class="animate__animated animate__pulse animate__infinite" data-lang-en=" Expense Tracker" data-lang-hi=" व्यय ट्रैकर">Super Ultimate Expense Tracker</h1>
+            <div class="header-controls">
+                <button id="darkModeToggle" data-lang-en="Dark Mode" data-lang-hi="डार्क मोड">Dark Mode</button>
+                <button id="fullScreen" data-lang-en="Full Screen" data-lang-hi="फुल स्क्रीन">Full Screen</button>
+                <button id="langToggle" data-lang-en="हिन्दी" data-lang-hi="English">हिन्दी</button>
+                <button id="logout" data-lang-en="Logout" data-lang-hi="लॉगआउट">Logout</button>
+            </div>
+        </header>
+
+        <section class="dashboard animate__animated animate__zoomIn">
+            <h2 data-lang-en="Dashboard" data-lang-hi="डैशबोर्ड">Dashboard</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="label" data-lang-en="Total Spending" data-lang-hi="कुल खर्च">Total Spending</span>
+                    <span class="value">₹<span id="total">0</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="label" data-lang-en="Monthly Spending" data-lang-hi="मासिक खर्च">Monthly Spending</span>
+                    <span class="value">₹<span id="monthly">0</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="label" data-lang-en="Savings Goal" data-lang-hi="बचत लक्ष्य">Savings Goal</span>
+                    <span class="value">₹<span id="savings">0</span></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="budget animate__animated animate__fadeInUp">
+            <h2 data-lang-en="Set Budget" data-lang-hi="बजट सेट करें">Set Budget</h2>
+            <input type="number" id="budgetAmount" data-lang-en="Monthly Budget" data-lang-hi="मासिक बजट" placeholder="Monthly Budget">
+            <button id="setBudget" data-lang-en="Set Budget" data-lang-hi="बजट सेट करें">Set Budget</button>
+        </section>
+
+        <section class="form animate__animated animate__zoomIn">
+            <h2 data-lang-en="Add Expense" data-lang-hi="व्यय जोड़ें">Add Expense</h2>
+            <form id="expenseForm">
+                <input type="number" id="amount" data-lang-en="Amount" data-lang-hi="राशि" placeholder="Amount" required>
+                <select id="category">
+                    <option value="Food" data-lang-en="Food" data-lang-hi="भोजन">Food</option>
+                    <option value="Travel" data-lang-en="Travel" data-lang-hi="यात्रा">Travel</option>
+                    <option value="Shopping" data-lang-en="Shopping" data-lang-hi="खरीदारी">Shopping</option>
+                    <option value="Bills" data-lang-en="Bills" data-lang-hi="बिल">Bills</option>
+                    <option value="Other" data-lang-en="Other" data-lang-hi="अन्य">Other</option>
+                </select>
+                <input type="text" id="description" data-lang-en="Description" data-lang-hi="विवरण" placeholder="Description" required>
+                <input type="date" id="date" required>
+                <button type="submit" data-lang-en="Add Expense" data-lang-hi="व्यय जोड़ें">Add Expense</button>
+                <button type="button" id="voiceInput">🎤 Voice</button>
+            </form>
+        </section>
+
+        <section class="filters animate__animated animate__fadeIn">
+            <h2 data-lang-en="Filters" data-lang-hi="फ़िल्टर">Filters</h2>
+            <input type="date" id="startDate" data-lang-en="Start Date" data-lang-hi="प्रारंभ तिथि" placeholder="Start Date">
+            <input type="date" id="endDate" data-lang-en="End Date" data-lang-hi="अंतिम तिथि" placeholder="End Date">
+            <select id="filterCategory">
+                <option value="" data-lang-en="All Categories" data-lang-hi="सभी श्रेणियाँ">All Categories</option>
+                <option value="Food" data-lang-en="Food" data-lang-hi="भोजन">Food</option>
+                <option value="Travel" data-lang-en="Travel" data-lang-hi="यात्रा">Travel</option>
+                <option value="Shopping" data-lang-en="Shopping" data-lang-hi="खरीदारी">Shopping</option>
+                <option value="Bills" data-lang-en="Bills" data-lang-hi="बिल">Bills</option>
+                <option value="Other" data-lang-en="Other" data-lang-hi="अन्य">Other</option>
+            </select>
+            <input type="number" id="minAmount" data-lang-en="Min Amount" data-lang-hi="न्यूनतम राशि" placeholder="Min Amount">
+            <input type="number" id="maxAmount" data-lang-en="Max Amount" data-lang-hi="अधिकतम राशि" placeholder="Max Amount">
+            <button id="applyFilters" data-lang-en="Apply Filters" data-lang-hi="फ़िल्टर लागू करें">Apply Filters</button>
+            <button id="exportCSV" data-lang-en="Export as CSV" data-lang-hi="CSV के रूप में निर्यात करें">Export as CSV</button>
+            <input type="file" id="importCSV" accept=".csv" data-lang-en="Import CSV" data-lang-hi="CSV आयात करें">
+        </section>
+
+        <section class="expenses animate__animated animate__fadeInUp">
+            <h2 data-lang-en="Expenses" data-lang-hi="व्यय">Expenses</h2>
+            <select id="sortBy">
+                <option value="date" data-lang-en="Sort by Date" data-lang-hi="तिथि के अनुसार क्रमबद्ध करें">Sort by Date</option>
+                <option value="amount" data-lang-en="Sort by Amount" data-lang-hi="राशि के अनुसार क्रमबद्ध करें">Sort by Amount</option>
+                <option value="category" data-lang-en="Sort by Category" data-lang-hi="श्रेणी के अनुसार क्रमबद्ध करें">Sort by Category</option>
+            </select>
+            <div id="expenseList"></div>
+        </section>
+
+        <section class="charts animate__animated animate__fadeIn">
+            <h2 data-lang-en="Spending Analysis" data-lang-hi="खर्च विश्लेषण">Spending Analysis</h2>
+            <button id="toggleChartType" data-lang-en="Switch to Bar Chart" data-lang-hi="बार चार्ट पर स्विच करें">Switch to Bar Chart</button>
+            <canvas id="expenseChart" width="600" height="400"></canvas>
+        </section>
+    </div>
+
+    <audio id="alertSound" src="https://www.soundjay.com/buttons/beep-01a.mp3"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
